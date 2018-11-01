@@ -14,12 +14,14 @@ class GossipsController < ApplicationController
 	end
 
 	def edit
+		@gossip = Gossip.find(params[:id])
 	end
 
 	def update
+		@gossip = Gossip.find(params[:id])
 		respond_to do |format|
       		if @gossip.update(gossip_params)
-        		format.html { redirect_to "/gossips", notice: 'Gossip was successfully updated.' }
+        		format.html { redirect_to gossip_path(@gossip), notice: 'Gossip was successfully updated.' }
       		end
   		end
 	end
@@ -29,17 +31,21 @@ class GossipsController < ApplicationController
 		@gossip = Gossip.new(gossip_params)
 		respond_to do |format|	
 			if @gossip.save
-				format.html { redirect_to gossips_path }
+				format.html { redirect_to gossip_path(@gossip), notice: 'Gossip was successfully updated.' }
 			end
 		end
 	end
 
 	def destroy
-		@gossip.destroy
+		@gossip = Gossip.find(params[:id])
+		if @gossip.present?
+			@gossip.destroy
 		respond_to do |format|
 			format.html { redirect_to "/" , notice: 'Gossip has been destroyed!' }
+			end
 		end
 	end
+
 
 	private
     # Use callbacks to share common setup or constraints between actions.

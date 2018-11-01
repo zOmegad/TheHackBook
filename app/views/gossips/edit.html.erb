@@ -7,14 +7,14 @@
   <div "text-align: center;" class="card-header">
 <%= render 'form', gossip: @gossip %>
 	<br>
+	
 	<div class ="bg-primary bg-warning btn btn-primary">
-		<%= link_to 'Show', @gossip %>
+		<%= link_to 'Back', gossip_path %>
 	</div>
 	<div class ="bg-primary bg-warning btn btn-primary">
-		<%= link_to 'Back', @gossips %>
-	</div>
-	<div class ="bg-primary bg-warning btn btn-primary">
-	<%= link_to 'Destroy', @gossip, method: :delete, data: { confirm: 'Are you sure?' } %>
+ <%= link_to 'Destroy', gossip_path, method: :delete %> 
+
+
 	</div>
 </div>
 </div>

@@ -5,11 +5,14 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @gossips = Gossip.all
+    print @gossips
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    print @gossips
   end
 
   # GET /users/new
@@ -24,6 +27,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    puts "coucou"
+    print @gossips
     @user = User.new(user_params)
 
     respond_to do |format|

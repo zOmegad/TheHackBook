@@ -1,0 +1,16 @@
+<%= form_with(model: gossip) do |form| %>
+
+<div style="text-align: center;">
+  <form action="/gossips/new">
+    <div class="form-group">
+      <%= form.text_field :anonymous_author, placeholder:"Auteur Anonyme", label: "Auteur anonyme", label_class:"form_label" %>
+    </div>
+
+    <div class="field">
+      <%= form.text_field :content, placeholder:"Idea", label: "Idea", label_class:"form_label" %>
+    </div>
+	<% user_id = session[:user_id] %>
+      <%= form.button :submit, class:"bg-warning btn btn-treehouse" %>
+  </form>
+</div>
+<% end %>

@@ -1,0 +1,21 @@
+<br>
+<h1 style="text-align: center;">Editing User</h1>
+<br>
+
+<div style="margin: 0 auto; width: 50%;">
+<div style="text-align: center;" class="card">
+  <div "text-align: center;" class="card-header">
+<%= render 'form', gossip: @gossip %>
+	<br>
+	<div class ="bg-primary bg-warning btn btn-primary">
+		<%= link_to 'Show', @gossip %>
+	</div>
+	<div class ="bg-primary bg-warning btn btn-primary">
+		<%= link_to 'Back', @gossips %>
+	</div>
+	<div class ="bg-primary bg-warning btn btn-primary">
+	<%= link_to 'Destroy', @gossip, method: :delete, data: { confirm: 'Are you sure?' } %>
+	</div>
+</div>
+</div>
+</div>

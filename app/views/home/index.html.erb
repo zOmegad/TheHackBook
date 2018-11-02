@@ -1,12 +1,23 @@
-<h1>Home#index</h1>
-
+<div class="card" style="color: white; margin: 0 auto; width: 50%; text-align: center; background-color: green;">
+	<br>
 <% if current_user %>
   Logged in as <%= current_user.email %>.
-  <%= link_to "Log Out", session_url(current_user), method: :delete %>
+  <br>
+  <%= link_to "Log Out", session_url(current_user), method: :delete, class: "bg-light btn btn-treehouse", style: "color: black; margin: 0 auto;"%>
+  
+
 <% else %>
-  <%= link_to "Sign Up", new_user_url %> or 
-  <%= link_to "Log In", new_session_url %>
+  <%= link_to "Sign Up", new_user_url, class: "bg-light btn btn-treehouse", style: "color: black; margin: 0 auto;"%>
+  <br>
+  <%= link_to "Log In", new_session_url, class: "bg-light btn btn-treehouse", style: "color: black; margin: 0 auto;"%>
+  <br>
 <% end %>
+<br>
+</div>
+<br>
+
+<h1 style="text-align: center; color: white;">Welcome the Idea Book</h1>
+
 
 <p style="color: green" id="notice"><%= notice %></p>
 
@@ -14,13 +25,12 @@
 <div>
 <div class="card" style="text-align: center; margin: 0 auto; width: 50%;">
   	<div class="card-header">
-    	Gossip <%= gossip.id %>
+    	Author : <%= gossip.anonymous_author %>
   	</div>
   <div class="card-body">
-    	<p class="card-text"><%= gossip.anonymous_author %></p>
     	<p class="card-text text"><%= gossip.content %></p>
   	</div>
-  <%= link_to 'Show', gossip %>
+  <%= link_to 'Show', gossip, class: "bg-success btn btn-treehouse", style: "margin: 0 auto; width: 30%;"%>
   <div class="card-body">
   	<!-- Condition ternaire -->
   	<p style="" class="card-text text">

@@ -2,6 +2,7 @@
 <div style="text-align: center; font-size: 20px; margin: 0 auto; width: 50%;">
 	<div class="card">
 	  	<div class="card-header">
+	  		<h3>Post :</h3>
 			<div class="card-body">
 				<p class="card-text">
 	  				<strong>Username:</strong>
@@ -13,8 +14,8 @@
 					<%= @gossip.content %>
 				</p>
 			</div>
-			  <%= link_to 'Edit', edit_gossip_path(@gossip)%>
-			  <%= link_to 'Comment', new_gossip_comment_path(@gossip), class: "bg-warning btn btn-treehouse" %>
+			  <%= link_to 'Edit', edit_gossip_path(@gossip), class: "bg-warning btn btn-treehouse"%>
+			  <%= link_to 'Comment', new_gossip_comment_path(@gossip), class: "bg-success btn btn-treehouse" %>
 
 	   </div>
 	</div>
@@ -25,6 +26,7 @@
 	<div class="card" style="text-align: center; margin: 0 auto; width: 50%;"> 
 		<div class="card">
 			<div class="card-header">
+				<h3>Comment :</h3>
 				<div class="card-body">
 					<p class="card-text">
 						<strong>Author:</strong>
@@ -33,18 +35,17 @@
 						<strong>Content:</strong>
 						<%= comment.content %>
 					</p>
-					<%= link_to 'Reply', new_gossip_comment_reply_path(@gossip, comment), class: "bg-warning btn btn-treehouse" %>
+					<%= link_to 'Reply', new_gossip_comment_reply_path(@gossip, comment), class: "bg-success btn btn-treehouse" %>
 					<%= link_to 'Edit', edit_gossip_comment_path(comment), class: "bg-warning btn btn-treehouse"%>
-					<%= link_to 'Destroy', gossip_comment_path(@gossip, comment.id), method: :delete %> 
-					<div style="border-top: ridge;">
+					<%= link_to 'Destroy', gossip_comment_path(@gossip, comment.id), method: :delete , class: "bg-danger btn btn-treehouse"%> 
 
 						<% for reply in @replies.where(comment_id: comment.id) %>
-						<%= reply.anonymous_replier %>
-						<br>
-						<%= reply.content %>
-						<%end%>
-
-					</div>
+							<div style="border-top: ridge;">
+							<%= reply.anonymous_replier %>
+							<br>
+							<%= reply.content %>
+							</div>
+					<%end%>
 			   </div>
 			</div>
 		</div>

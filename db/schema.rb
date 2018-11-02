@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_145841) do
+ActiveRecord::Schema.define(version: 2018_11_01_230635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "anonymous_commentor"
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "gossip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gossip_id"], name: "index_comments_on_gossip_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "gossips", force: :cascade do |t|
     t.string "anonymous_author"
@@ -22,6 +33,17 @@ ActiveRecord::Schema.define(version: 2018_11_01_145841) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_gossips_on_user_id"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.string "anonymous_replier"
+    t.text "content"
+    t.bigint "comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,5 +55,9 @@ ActiveRecord::Schema.define(version: 2018_11_01_145841) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "comments", "gossips"
+  add_foreign_key "comments", "users"
   add_foreign_key "gossips", "users"
+  add_foreign_key "replies", "comments"
+  add_foreign_key "replies", "users"
 end

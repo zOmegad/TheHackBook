@@ -1,0 +1,17 @@
+<%= form_with(model: @comment, url: [@gossip, @comment]) do |form| %>
+
+<div style="text-align: center;">
+  <form action="/gossips/new">
+    <div class="form-group">
+      <%= form.text_field :anonymous_commentor, placeholder:"Auteur Anonyme", label: "Auteur anonyme", label_class:"form_label" %>
+    </div>
+
+    <div class="field">
+      <%= form.text_field :content, placeholder:"Comment", label: "Comment", label_class:"form_label" %>
+    </div>
+
+      <%= form.button :submit, class:"bg-warning btn btn-treehouse"%>
+      
+  </form>
+</div>
+<% end %>

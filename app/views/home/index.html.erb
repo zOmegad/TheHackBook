@@ -7,6 +7,7 @@
   <%= link_to "Sign Up", new_user_url %> or 
   <%= link_to "Log In", new_session_url %>
 <% end %>
+
 <p style="color: green" id="notice"><%= notice %></p>
 
 <% Gossip.all.each do |gossip| %>
@@ -20,6 +21,13 @@
     	<p class="card-text text"><%= gossip.content %></p>
   	</div>
   <%= link_to 'Show', gossip %>
+  <div class="card-body">
+  	<!-- Condition ternaire -->
+  	<p style="" class="card-text text">
+  		<%= "#{Comment.where(gossip_id: gossip.id).count} #{(Comment.where(gossip_id: gossip.id).count > 1) ? "commentaires" : "commentaire"}" %>
+  			
+  		</p>
+  </div>
 	</div>
 </div>
 <br>
